@@ -54,20 +54,14 @@ void displayList(NODE* trav)
     while(trav->next != NULL)
     {
 
+        printf("%i, ", trav->value);
         trav = trav->next;
-        printf(", %i", trav->value);
+
     }
+    printf("%i\n", trav->value);
 
     // printf("%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
 
-    // xx
-    // printf("hit displayList funct\n");
-    // NODE rootNode;
-    // newNode->value = value;
-    // while (rootNode.next == NULL)
-    // {
-    //     printf("new node value: \n");
-    // }
 
 }
 
@@ -79,20 +73,11 @@ int main (void)
     rootNode.next = NULL;
 
     addNode(10, &rootNode);
-    // printf("added 10\n");
     addNode(8, &rootNode);
-    // printf("added 8\n");
     addNode(17, &rootNode);
-    // printf("added 17\n");
 
-    // printf("%i\n", rootNode.next->next->value);
-
-    printf(" %i", rootNode.value);
-    // printf("new node value: %i\n", addNode);
-    // printf("%i\n", rootNode.next->value);
 
     displayList(&rootNode);
-    printf("\n");
 
 }
 
