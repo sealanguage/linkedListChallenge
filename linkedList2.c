@@ -12,11 +12,11 @@ typedef struct NODE
 }NODE;
 
 
-int add(int *x, int y)
-{
-    *x += 3;
-    return *x + y;
-}
+// int add(int *x, int y)
+// {
+//     *x += 3;
+//     return *x + y;
+// }
 
 // initaillize the list
 void addNode(int value, NODE *homeNode)
@@ -24,26 +24,23 @@ void addNode(int value, NODE *homeNode)
 
     NODE * trav = homeNode;
     while(trav->next != NULL)
-        {
-
-        if (trav->next == NULL)
-        {
-            trav = trav->next;
-
-        }
+    {
+        trav = trav->next;
+    }
     NODE *newNode = malloc(sizeof(NODE));
     newNode->value = value;
     newNode->next = NULL;
     trav->next = newNode;
-    break;
+    // break;
         while(trav->next != NULL)
         {
             trav = trav->next;
             // printf("Value = %i\n", value);
-            printf("moved deeper\n");
+            // printf("moved deeper\n");
 
         }
-    }
+
+
 }
 
 
@@ -51,9 +48,26 @@ void displayList(NODE* trav)
 {
     // iterate through the list and print each number until it gets to the end.
     // should display 5, 10, 8, 17
-    printf("hit displayList funct");
 
+    // printf("trav->value %i\n", trav->value);
 
+    while(trav->next != NULL)
+    {
+
+        trav = trav->next;
+        printf(", %i", trav->value);
+    }
+
+    // printf("%i\n", rootNode.next->next->value, rootNode.next->next->next->value);
+
+    // xx
+    // printf("hit displayList funct\n");
+    // NODE rootNode;
+    // newNode->value = value;
+    // while (rootNode.next == NULL)
+    // {
+    //     printf("new node value: \n");
+    // }
 
 }
 
@@ -65,16 +79,20 @@ int main (void)
     rootNode.next = NULL;
 
     addNode(10, &rootNode);
-
+    // printf("added 10\n");
     addNode(8, &rootNode);
     // printf("added 8\n");
     addNode(17, &rootNode);
     // printf("added 17\n");
 
-    // printf("%i\n", rootNode.value);
+    // printf("%i\n", rootNode.next->next->value);
+
+    printf(" %i", rootNode.value);
+    // printf("new node value: %i\n", addNode);
     // printf("%i\n", rootNode.next->value);
+
     displayList(&rootNode);
+    printf("\n");
 
 }
 
-;
