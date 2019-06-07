@@ -11,7 +11,7 @@ typedef struct NODE
     struct NODE *next;
 }NODE;
 
-NODE *rootNode;
+
 
 // initaillize the list
 void addNode(int value, NODE *homeNode)
@@ -63,16 +63,19 @@ void displayList(NODE* trav)
 
 int main (void)
 {
-    // NODE rootNode;
-    // rootNode.value = 5;
-    // rootNode.next = NULL;
-    addNode(5, rootNode);
-    addNode(10, rootNode);
-    addNode(8, rootNode);
-    addNode(17, rootNode);
+    NODE rootNode;
+    rootNode.value = 5;
+    rootNode.next = NULL;
+
+    addNode(10, &rootNode);
+    addNode(8, &rootNode);
+    addNode(17, &rootNode);
+
+    // printf(" %i", rootNode.value);
 
 
-    displayList(rootNode);
-
+    displayList(&rootNode);
+    printf("linkedList2 is working\n");
+    void free();
 }
 
