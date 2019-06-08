@@ -51,10 +51,12 @@ void addNode(int value)
 
 int main(void)
 {
-    printf("hello\n");
+    // printf("hello\n");
     addNode(10);
+    addNode(8);
     addNode(15);
-    addNode(4);
 
 
 }
+
+// 10  8  15  17  9  20  18  16  13  5  7
