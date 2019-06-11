@@ -49,14 +49,55 @@ void addNode(int value)
 
 }
 
+
+
+void displayTreeOnEntry(NODE *curNode)
+{
+    if (curNOde->low != NULL)
+    {
+        dipslayTreeOnentry(curNode->low);
+    }
+    if (curNode->high != NULL)
+    {
+        displayTreeOnEntry(curNode->high);
+    }
+}
+
+
+void displayTreeOnDeparture(NODE *curNode)
+{
+
+}
+
+
+
+
+int doesContain(int value)
+{
+    // search the tree
+    // return 0 if value is not in the tre
+    // return 1 if value does exist in the tree
+    return 0;
+}
+
 int main(void)
 {
     // printf("hello\n");
     addNode(10);
     addNode(8);
     addNode(15);
+    ddNode(4);
+    addNode(6);
+    addNode(7);
+    ddNode(9);
+    addNode(13);
+    addNode(18);
+    ddNode(16);
+    addNode(11);
+    addNode(1);
 
-
+    displayTreeOnEnter(rootNode);
+    printf("\n");
 }
 
-// 10  8  15  17  9  20  18  16  13  5  7
+// 10  8  15  17  20  18  5  6  9  4  13  7

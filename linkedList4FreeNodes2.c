@@ -11,39 +11,56 @@ typedef struct NODE
     struct NODE *next;
 }NODE;
 
-
+NODE* rootNode;
 
 // initaillize the list
-void addNode(int value, NODE *homeNode)
+void addNode(int value)
 {
-
-    NODE * trav = homeNode;
-    while(trav->next != NULL)
-    {
-        trav = trav->next;
-    }
     NODE *newNode = malloc(sizeof(NODE));
     newNode->value = value;
     newNode->next = NULL;
+
+    if(rootNode == NULL)
+    {
+        rootNode = newNode;
+        return;
+    }
+    NODE * trav = rootNode;
+    while(trav->next != NULL)
+    {
+        trav = trav->next;
+        // printf("Value = %i\n", value);
+        // printf("moved deeper\n");
+    }
     trav->next = newNode;
-    // break;
-        while(trav->next != NULL)
-        {
-            trav = trav->next;
-            // printf("Value = %i\n", value);
-            // printf("moved deeper\n");
-
-        }
-
 
 }
 
+void removeNode(int value)
+{
+    NODE *trav = rootNode;
+    if(rootNode->value == value)
+    {
+        rootNode = rootNode->next;
+        free(trav);
+        return;
+    }
+    printf("%i\n", trav->value);
+    while(trav->next->value != value)
+    {
+        trav = trav->next;
+    }
+    NODE *temp = trav->next;
+    trav->next = temp->next;
+    free(temp);
+}
 
-void displayList(NODE* trav)
+
+void displayList()
 {
     // iterate through the list and print each number until it gets to the end.
     // should display 5, 10, 8, 17
-
+    NODE* trav = rootNode;
     printf("%i, ", trav->value);
 
     while(trav->next != NULL)
@@ -58,44 +75,36 @@ void displayList(NODE* trav)
 
 }
 
-// void removeNode(int value)
+
+// this freeList() doesn't work
+// void freeList()
 // {
-//     NODE *trav = rootNode;
-//     if(rootNode->value == value)
+//     // loop through find last item, send value to remove node
+//     // loop through find second to last remove item, and set to null until only head remains
+//     // recursively iterate through the list to remove all items
+
+//     printf("attempt to free %i\n", curNode->value);
+//     if(curNode->next == NULL)
 //     {
-
-//         trav = trav->next
+//         printf("no children freed %i\n", curNode->value);
+//         free(curNODE);
+//         return;
 //     }
-//     printf("%i\n", trav->value);
+//     // if I have a child, iterate through the list to remove all items
+//     printf("child found moving to children \n", curNode->value);
+//     freeList(curNode->next);
+//     // my child freed itself
+//     printf("control returned to  %i\n", curNode->value);
+//     free(curNode):
+//     return;
 // }
-
-void freeList()
-{
-    // loop through find last item, send value to remove node
-    // loop through find second to last remove item, and set to null until only head remains
-    // recursively iterate through the list to remove all items
-
-    printf("attempt to free %i\n", curNode->value);
-    if(curNode->next == NULL)
-    {
-        printf("no children freed %i\n", curNode->value);
-        free(curNODE);
-        return;
-    }
-    // if I have a child, iterate through the list to remove all items
-    printf("child found moving to children \n", curNode->value);
-    freeList(curNode->next);
-    // my child freed itself
-    printf("control returned to  %i\n", curNode->value);
-    free(curNode):
-    return;
-}
 
 
 // freeList efficient remove
 void freeListEficientRemoveNoe()
 {
-    while(rootNode)
+    NODE *trav = rootNode;
+    while(rootNode == NULL)
     {
         removeNode(rootNode->value);
     }
@@ -138,20 +147,20 @@ void freeListEficientRemoveNoe()
 
 int main (void)
 {
-    NODE rootNode;
-    rootNode.value = 5;
-    rootNode.next = NULL;
-
-    // addNode(10, &rootNode);
-    // addNode(8, &rootNode);
-    // addNode(17, &rootNode);
+    // NODE rootNode;
+    // rootNode.value = 5;
+    // rootNode.next = NULL;
+    addNode(5);
+    addNode(10);
+    addNode(8);
+    addNode(17);
 
     // printf(" %i", rootNode.value);
 
 
-    // displayList(&rootNode);
+    displayList();
     // printf("linkedList4 is working\n");
-    freeList();
+    freeListEficientRemoveNoe();
     void free();
 }
 
