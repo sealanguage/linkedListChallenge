@@ -76,20 +76,67 @@ void displayTreeOnEnter(NODE *curNode)
     }
 }
 
+void displayTreeOnExit(NODE *curNode)
+{
+    printf("%i ", curNode->value);
 
+    if (curNode->low == NULL)
+    {
+        displayTreeOnEnter(curNode->low);
+    }
+    if (curNode->high == NULL)
+    {
+        displayTreeOnEnter(curNode->high);
+    }
+}
+
+
+// WORKING ON THIS SECTION NOW ******************************
 void displayTreeOnDeparture(NODE *curNode)
 {
-    while (curNode->low != NULL)
-    curNode = curNode->low;
+    NODE * trav = rootNode;
+    NODE *temp;
+    printf("display DEPARTURE: %i\n", rootNode->value);
 
+    while(trav->low->low != NULL && trav->low->high != NULL)
     {
-        if (curNode->low == NULL)
-        printf("%i ", curNode->value);
-        free(curNode);
+        trav = trav->low->low;
+        // temp = trav->low;
+        printf("trav low low %i\n", trav->low->value);
+        // trav = temp;
+        while(trav->low->low == NULL && trav->high != NULL)
+        {
+            trav = trav->high->high;
+            printf("trav high %i\n", trav->value);
+            // free(trav);
+        }
+
     }
+    // while(trav->high != NULL)
+    // {
+    //     trav = trav->high;
+    //     printf("trav %i\n", trav->value);
+    // }
+
+
+    printf("end %i\n", trav->value);
+
+    // NODE * trav = rootNode;
+    // if (rootNode->low == NULL && rootNode->high == NULL)
+    //     {
+    //         printf("rootNode value %i ", rootNode->value);
+    //         // free(curNode);
+    //     }
+
+    // while (curNode->low != NULL)
+    // {
+    //     curNode = curNode->low;
+    // }
+
 
 }
 
+//  4 7 6 5 9 8 13 18 20 17 15 10
 
 
 
@@ -122,4 +169,5 @@ int main(void)
     printf("\n");
     displayTreeOnDeparture(rootNode);
     printf("\n");
+    displayTreeOnExit(rootNode);
 }

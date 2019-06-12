@@ -101,12 +101,14 @@ void displayList()
 
 
 // freeList efficient remove
-void freeListEficientRemoveNoe()
+void freeListEficientRemoveNode()
 {
     NODE *trav = rootNode;
+    // err
     while(rootNode == NULL)
     {
         removeNode(rootNode->value);
+        printf("removed node value %i\n", rootNode->value);
     }
 }
 
@@ -128,22 +130,22 @@ void freeListEficientRemoveNoe()
 
 // }
 
-// void freeListFunction()
-// {
-//     while(rootNode->next != NULL)
-//     {
-//       NODE *trav = rootNode;
-//       while(*trav->next != NULL)
-//       {
-//           trav = trav->next;
+void freeListFunction()
+{
+    while(rootNode->next != NULL)
+    {
+      NODE *trav = rootNode;
+      while(trav->next != NULL)
+      {
+          trav = trav->next;
 
-//         printf("travelling %i\n", trav->value);
-//       }
-//       removeNode(trav->value);
+        printf("travelling %i\n", trav->value);
+      }
+      removeNode(trav->value);
 
-//     }
+    }
 
-// }
+}
 
 int main (void)
 {
@@ -154,13 +156,15 @@ int main (void)
     addNode(10);
     addNode(8);
     addNode(17);
-
+    displayList();
+    // removeNode(17);
     // printf(" %i", rootNode.value);
 
 
-    displayList();
+
     // printf("linkedList4 is working\n");
-    freeListEficientRemoveNoe();
+    freeListFunction();
+    freeListEficientRemoveNode();
     void free();
 }
 
