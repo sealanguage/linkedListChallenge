@@ -95,7 +95,6 @@ void displayTreeOnExit(NODE *curNode)
     printf("%i ", curNode->value);
 }
 
-
 void displayTreeOnDeparture(NODE *curNode)
 {
 
@@ -152,9 +151,52 @@ int doesContain(int value)
 
 
 // WORKING ON THIS SECTION NOW ******************************
-void freeTree()
+void freeTree(NODE *curNode)
 {
 
+    while (rootNode->low->low != NULL)
+    {
+        NODE *trav = rootNode;
+        while(trav->low->low != NULL)
+        {
+            printf("node value is %i\n", trav->value);
+            trav = trav->low;
+        }
+        printf("%i\n", trav->low->low->value);
+        free(trav->low->low);
+        trav->low = NULL;
+
+        while(trav->high->high != NULL)
+        {
+            printf("node value high is %i\n", trav->high->value);
+            trav = trav->high->high;
+        }
+        printf("node value high is %i\n", trav->high->value);
+        free(trav->high->high);
+        trav->high = NULL;
+        continue;
+    }
+    // free(rootNode);
+    return;
+
+
+
+
+        // NODE *trav = rootNode;
+
+        // while (trav->low != NULL)
+        // {
+        //     printf("trav->low %i\n", trav->low->value);
+        //     printf("trav->low->low %i\n", trav->low->low->value);
+        //     printf("trav->low->low->low %i\n", trav->low->low->low->value);
+        //     trav = trav->low;
+        //     printf("trav->low->low %i\n", trav->low->low->value);
+        //     free(trav->low->low);
+        //     trav->low = NULL;
+        //     printf("new trav->low->value %i\n", trav->low->value);
+        // }
+        // return;
+    // }
 
 }
 
@@ -189,12 +231,15 @@ int main(void)
     addNode(7);
 
 
+    // assert(!freeTree(4) && "tree does not contain 4");
+
     // displayTreeOnEnter(rootNode);
-    tests();
+    // tests();
     // printf("\n");
     displayTreeOnDeparture(rootNode);
     printf("\n");
     // displayTreeOnExit(rootNode);
     // printf("\n");
     doesContain(2);
+    freeTree(rootNode);
 }

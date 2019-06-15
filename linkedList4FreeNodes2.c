@@ -121,7 +121,7 @@ void freeListEficientRemoveNode()
 //         {
 //             trav = trav->next;
 //         }
-//         printf("%i\n. trav->value");
+//         printf("%i\n", trav->value);
 //         free(trav->next);
 //         trav->next = NULL;
 //         return;
