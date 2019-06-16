@@ -86,11 +86,11 @@ void displayTreeOnExit(NODE *curNode)
 
     if (curNode->low != NULL)
     {
-        displayTreeOnEnter(curNode->low);
+        displayTreeOnExit(curNode->low);
     }
     if (curNode->high != NULL)
     {
-        displayTreeOnEnter(curNode->high);
+        displayTreeOnExit(curNode->high);
     }
     printf("%i ", curNode->value);
 }
@@ -152,32 +152,95 @@ int doesContain(int value)
 
 // WORKING ON THIS SECTION NOW ******************************
 void freeTree(NODE *curNode)
+
 {
 
-    while (rootNode->low->low != NULL)
+    NODE *trav = rootNode;
+    if (rootNode->low  == NULL && rootNode->high == NULL)
     {
-        NODE *trav = rootNode;
-        while(trav->low->low != NULL)
-        {
-            printf("node value is %i\n", trav->value);
-            trav = trav->low;
-        }
-        printf("%i\n", trav->low->low->value);
-        free(trav->low->low);
-        trav->low = NULL;
-
-        while(trav->high->high != NULL)
-        {
-            printf("node value high is %i\n", trav->high->value);
-            trav = trav->high->high;
-        }
-        printf("node value high is %i\n", trav->high->value);
-        free(trav->high->high);
-        trav->high = NULL;
-        continue;
+        free(rootNode);
     }
-    // free(rootNode);
+
+    if (curNode->low != NULL)
+    {
+        freeTree(curNode->low);
+    }
+    if (curNode->high != NULL)
+    {
+        freeTree(curNode->high);
+    }
+    printf("curNode value is %i ", curNode->value);
+    free(curNode);
+    printf("curnode freed %i\n", curNode->value);
+
+
+
+
+
+    // while (rootNode != NULL)
+    // {
+    //     printf("deleting node low: %i\n ", trav->value);
+    //     freeTree(curNode->low);
+    //     // trav = trav->low;
+
+    //     free(curNode->low);
+
+    //     printf("deleting node high: %i\n ", trav->value);
+    //     freeTree(curNode->high);
+    //     free(curNode->high);
+    //     // return;
+    // }
+
+
+
+    // while (trav->low != NULL)
+    // {
+
+    //     trav = trav->low;
+    //     printf("%i\n deleting node low: ", trav->value);
+    //     // freeTree(trav->low);
+    //      while (trav->high != NULL)
+    // {
+
+    //     // freeTree(trav->high);
+
+    //     trav = trav->high;
+    //      printf("%i\n deleting node high: ", trav->value);
+    //     // free(trav)
+    //     // assert (0);
+    //     return;
+    // }
     return;
+    }
+
+
+
+
+
+    // while (rootNode->low->low != NULL)
+    // {
+    //     NODE *trav = rootNode;
+    //     while(trav->low->low != NULL)
+    //     {
+    //         printf("node value is %i\n", trav->value);
+    //         trav = trav->low;
+    //     }
+    //     printf("%i\n", trav->low->low->value);
+    //     free(trav->low->low);
+    //     trav->low = NULL;
+
+    //     while(trav->high->high != NULL)
+    //     {
+    //         printf("node value high is %i\n", trav->high->value);
+    //         trav = trav->high->high;
+    //     }
+    //     printf("node value high is %i\n", trav->high->value);
+    //     free(trav->high->high);
+    //     trav->high = NULL;
+    //     continue;
+    // }
+    // // free(rootNode);
+    // return;
 
 
 
@@ -198,7 +261,7 @@ void freeTree(NODE *curNode)
         // return;
     // }
 
-}
+
 
 
 void tests()
@@ -242,4 +305,6 @@ int main(void)
     // printf("\n");
     doesContain(2);
     freeTree(rootNode);
+    rootNode = NULL;
+     printf("Tree deleted \n");
 }
