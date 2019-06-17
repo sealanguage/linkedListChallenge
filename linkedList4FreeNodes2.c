@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #define true 1
 #define false 0
@@ -101,16 +102,16 @@ void displayList()
 
 
 // freeList efficient remove
-void freeListEficientRemoveNode()
-{
-    NODE *trav = rootNode;
-    // err
-    while(rootNode == NULL)
-    {
-        removeNode(rootNode->value);
-        printf("removed node value %i\n", rootNode->value);
-    }
-}
+// void freeListEficientRemoveNode()
+// {
+//     NODE *trav = rootNode;
+//     // err
+//     while(rootNode == NULL)
+//     {
+//         removeNode(rootNode->value);
+//         printf("FLERN removed node value %i\n", rootNode->value);
+//     }
+// }
 
 // void freeListSelf()
 // {
@@ -139,12 +140,18 @@ void freeListFunction()
       {
           trav = trav->next;
 
-        printf("travelling %i\n", trav->value);
+        printf("FLF travelling %i\n", trav->value);
       }
       removeNode(trav->value);
 
     }
 
+}
+
+// add code for does contain
+void doesContain(int value)
+{
+    printf("doesContain is here");
 }
 
 int main (void)
@@ -164,7 +171,7 @@ int main (void)
 
     // printf("linkedList4 is working\n");
     freeListFunction();
-    freeListEficientRemoveNode();
+    // freeListEficientRemoveNode();
     void free();
 }
 
