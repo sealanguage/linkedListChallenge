@@ -148,11 +148,43 @@ void freeListFunction()
 
 }
 
-// add code for does contain
-void doesContain(int value)
+//  -------------  WORKING ON THIS SECTION NOW  ------------------
+int doesContain(int value)
 {
-    printf("doesContain is here");
+    // search the tree
+    // return 0 if value is not in the tree (false)
+    // return 1 if value does exist in the tree (true)
+
+    // printf("doesContain is here\n");
+    NODE *trav = rootNode;
+
+    if (rootNode->value == value)
+    {
+        printf("rootNode == value\n");
+        return 1;
+    }
+        printf("trav value is %i\n", trav->value);
+        while(value != trav->value)
+        {
+            trav = trav->next;
+            printf("list value is %i\n", trav->value);
+            // return 0;
+            if (value != trav->value)
+            {
+                printf("trav value != value %i\n", trav->next->value);
+                return 0;
+            }
+            // if (trav->next == NULL)
+            // {
+            //     printf("2 not in list\n");
+            //     return 0;
+
+            // }
+        }
+        return 0;
 }
+
+
 
 int main (void)
 {
@@ -168,9 +200,14 @@ int main (void)
     // printf(" %i", rootNode.value);
 
 
-
+    // doesContain(5);
+    // doesContain(10);
+    // doesContain(8);
+    // doesContain(17);
+    // assert(doesContain(2) && "tree does not contain 2");
+    doesContain(2);
     // printf("linkedList4 is working\n");
-    freeListFunction();
+            // freeListFunction();
     // freeListEficientRemoveNode();
     void free();
 }
