@@ -166,20 +166,19 @@ int doesContain(int value)
         printf("trav value is %i\n", trav->value);
         while(value != trav->value)
         {
-            trav = trav->next;
             printf("list value is %i\n", trav->value);
+            trav = trav->next;
             // return 0;
-            if (value != trav->value)
+            if (value == trav->value)
             {
-                printf("trav value != value %i\n", trav->next->value);
+                printf("trav value == value %i\n", trav->value);
+
+            }
+            if (trav->next == NULL)
+            {
+                printf("2 not in list\n");
                 return 0;
             }
-            // if (trav->next == NULL)
-            // {
-            //     printf("2 not in list\n");
-            //     return 0;
-
-            // }
         }
         return 0;
 }
@@ -200,10 +199,11 @@ int main (void)
     // printf(" %i", rootNode.value);
 
 
-    // doesContain(5);
-    // doesContain(10);
-    // doesContain(8);
-    // doesContain(17);
+    doesContain(5);
+    doesContain(10);
+    doesContain(8);
+    doesContain(17);
+    assert(doesContain(5) && "tree does contain 5");
     // assert(doesContain(2) && "tree does not contain 2");
     doesContain(2);
     // printf("linkedList4 is working\n");
