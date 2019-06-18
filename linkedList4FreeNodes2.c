@@ -195,9 +195,9 @@ int main (void)
     addNode(8);
     addNode(17);
     displayList();
-    // removeNode(17);
+    removeNode(17);
     // printf(" %i", rootNode.value);
-
+    // displayList();
 
     doesContain(5);
     doesContain(10);
