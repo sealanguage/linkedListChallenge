@@ -143,9 +143,7 @@ void freeListFunction()
         printf("FLF travelling %i\n", trav->value);
       }
       removeNode(trav->value);
-
     }
-
 }
 
 //  -------------  WORKING ON THIS SECTION NOW  ------------------
